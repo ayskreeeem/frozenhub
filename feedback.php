@@ -11,10 +11,15 @@ include 'connect.php';
       $ratings = $_POST['ratings'];
       $feedback = $_POST['feedback'];
 
+      $targetDir = "pictures/";
+      $fileName = $_FILES["file"]["name"];
+      $targetFilePath = $targetDir . $fileName;
+      $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
+      if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
       $insert_applicant_query = "INSERT INTO `feedback_table`
-      (`firstName`, `lastName`, `email`, `phone`, `ratings`, `feedback` ) 
-      VALUES ('$firstName', '$lastName', '$email', '$phone', '$ratings', '$feedback')";
+      (`firstName`, `lastName`, `email`, `phone`, `ratings`, `feedback`, `picture` ) 
+      VALUES ('$firstName', '$lastName', '$email', '$phone', '$ratings', '$feedback', '$fileName')";
 
       $result_applicant = mysqli_query($conn, $insert_applicant_query);
 
@@ -25,7 +30,7 @@ include 'connect.php';
       else{
         echo "<script> alert ('Sorry, something went wrong.') </script>";
       }
-}
+}}
 ?>
 
 
@@ -67,7 +72,7 @@ input::-webkit-inner-spin-button {
         <div class="container-fluid">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-9">
-              <img src="Images/header.png" width="100%" height="auto">
+              <img src="https://lh3.googleusercontent.com/drive-viewer/AAOQEORwsoHzWxoEoNlJ4n1bR4aji_r7jA7WPbQOMth5REabik_rDa7pptnu1lFtHraszS04eNS4JYmXW5SNTKBZsK4H7D2vRg=s1600?fbclid=IwAR3h2V1bSwN87w2jWtMFhMPDet3eL-U8KSNIyguxKKjN3oRmny296FI5G8s" width="100%" height="auto">
             </div>
           </div>
         </div>
@@ -106,9 +111,9 @@ input::-webkit-inner-spin-button {
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-8 mb-3">
-            <form class="applyNow" method="POST">
+            <form class="applyNow" method="POST" enctype="multipart/form-data">
               <div class="container-fluid mt-3" style="margin-left: 10px;">
-                <h1 style="text-align:left; padding: 3px; color:white; font-weight:bold;">Are you satisfied with Frozenhub?</h1>
+                <h1 style="text-align:left; padding: 3px; color:white; font-weight:bold;">Feedback</h1>
                 <p style="text-align:left; padding: 3px; color:white; font-size: 20px;">Let us hear your opinion and suggestion to improve our service to serve you better!</p>
                 <p style="text-align:left; padding: 3px; color:white; font-weight:bold;">Customer Details:</p>
               </div>
@@ -135,6 +140,13 @@ input::-webkit-inner-spin-button {
                     <input type="number" placeholder="Contact Number" name="phone" id="number" required>
                   </div>
                 </div>
+              </div>
+
+              <div class="container-fluid">
+              <div class="form-group">
+              <p style="text-align:left; padding: 3px; color:white; font-weight:bold;">Picture of the Product:</p>
+                <input type="file" accept=".img,.jpg,.png" class="form-control-file" name="file" style="height:70px">
+              </div>
               </div>
 
               <div class="question p-3">

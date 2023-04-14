@@ -76,7 +76,7 @@ if (isset($_POST["submit"])) {
       <div class="container-fluid">
         <div class="row d-flex justify-content-center">
           <div class="col-lg-9">
-            <img src="Images/header.png" width="100%" height="auto">
+            <img src="https://lh3.googleusercontent.com/drive-viewer/AAOQEORwsoHzWxoEoNlJ4n1bR4aji_r7jA7WPbQOMth5REabik_rDa7pptnu1lFtHraszS04eNS4JYmXW5SNTKBZsK4H7D2vRg=s1600?fbclid=IwAR3h2V1bSwN87w2jWtMFhMPDet3eL-U8KSNIyguxKKjN3oRmny296FI5G8s" width="100%" height="auto">
           </div>
         </div>
       </div>
@@ -151,19 +151,20 @@ if (isset($_POST["submit"])) {
               <input type="text" class="form-control" id="inputAddress" placeholder="Address" name="address" required>
             </div>
 
-            <div class="container-fluid">
-              <div class="form-group">
-                <label for="exampleFormControlFile1">Example file input</label>
-                <input type="file" accept=".pdf" class="form-control-file" name="file" style="height:70px">
-              </div>
+              <div class="container-fluid">
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Upload Resume:</label>
+                  <input type="file" accept=".img,.jpg,.png, .pdf" class="form-control-file" name="file" id="exampleFormControlFile1" style="height:70px">
+               </div> 
+            
 
-              <div class="form-group">
-                <label for="inputDate" style="color:white; font-weight:bold;">List dates and time ranges that you could do an interview:</label>
-                <textarea class="form-control" id="inputMessage" name="interview" rows="3"></textarea>
-              </div>
+                <div class="form-group">
+                  <label for="inputDate" style="color:white; font-weight:bold;">List dates and time ranges that you could do an interview:</label>
+                  <textarea class="form-control" id="inputMessage" name="interview" rows="3"></textarea>
+                </div>
 
-              <p style="text-align:left; padding: 3px; color:white; font-weight:bold;">Job Experience (Optional)</p>
-            </div>
+                <p style="text-align:left; padding: 3px; color:white; font-weight:bold;">Job Experience (Optional)</p>
+             </div>
 
             <div class="form-row">
               <div class="col-md-6 p-3">

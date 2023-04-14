@@ -11,8 +11,8 @@
             <th>Bought On</th>
             <th>Complain Date</th>
             <th>Complain Details</th>
-            <th> Status </th>
             <th> Picture </th>
+            <th> Status </th>
 		        <th colspan="2">Actions</th>
         </tr>
 </thead>
@@ -28,24 +28,21 @@ $result = $conn->query($sql);
     $status = $row["status"];
     $picture = $row['picture'];
 
-
     echo '<tr>
 		<td>'. $row["firstname"] . '</td>
 		<td>' . $row["lastname"] . '</td>
 		<td>' . $row["email"] . '</td>
 		<td>' . $row['phoneNum'] . '</td>
 		<td>' . $row['proNo']. '</td>
-        <td>' . $row['comDate']. '</td>
-		<td>' . $row['proName'] . '</td>
-		<td>' . $row['details'] .'</td>
-		<td>'. $row['actions'] .'</td>
-        <td>' . $row['status'] .'</td>';
+    <td>' . $row['proName'] . '</td>
+    <td>' .$row['boughtOn']. '</td>
+    <td>' . $row['comDate']. '</td>
+		<td>' . $row['details'] .'</td>';
+    
 ?>
-        <td> <a href="../pictures/<?php echo $picture?>">view file</a></td>
-
+        <td><a href="../pictures/<?php echo $picture?>">view file</a></td>
 
     <?php
-
     if ($status == "Pending"){
       echo '
       <td style="background:lightgray;">'.$status.'</td>
@@ -62,7 +59,7 @@ $result = $conn->query($sql);
 		<td>
     <form method ="post">
     <button class="btn btn-success">
-    <a href="done.php?id='.$com_id.'" class="text-light">Accept</a></button>
+    <a href="./approval/complaints_done.php?id='.$com_id.'" class="text-light">Accept</a></button>
    </td>
    <td>
     <button class="btn btn-secondary">
